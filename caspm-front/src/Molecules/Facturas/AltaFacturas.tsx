@@ -21,10 +21,7 @@ const AltaFacturas = (prop:Props) => {
 //prestadores de comisiones
 const [prestadores, setPrestadores] = useState(['elija una comision']);
 //comisiones
-const [comisiones, setComisiones] = useState({
-  nombreDeComision: '',
-  idDeComision:0
-});
+const [comision, setComision] = useState(0);
 
 //factura
     const handlerNewFactura = (e:FormEvent<HTMLFormElement>) => {
@@ -48,25 +45,25 @@ const [comisiones, setComisiones] = useState({
         
         target : { name, value },
     }:HandleInputChange) => {
-        setComisiones(value);
+        setComision(Number.parseInt(value));
     } 
 
     useEffect(() => {
       let comisionUno :string[] = ['Emmanuel','Juan','Erica'];
       let comisionDos :string[] = ['Alan','Celeste','Kevin'];
       let comisionTres :string[] = ['Edgardo','Lucia','Romina'];
-      if(comisiones.nombreDeComision === 'a'){
+      if(comision === 0){
         setPrestadores(comisionUno);
       }
-      else if(comisiones.nombreDeComision === 'b'){
+      else if(comision === 1){
         setPrestadores(comisionDos);
       }
       else{
         setPrestadores(comisionTres);
       }
       console.log(prestadores);
-        console.log(comisiones);
-     }, [comisiones]);
+        console.log(comision);
+     }, [comision]);
 
      useEffect(() => {} , [prestadores]);
     
@@ -189,10 +186,10 @@ const [comisiones, setComisiones] = useState({
                 </FloatingLabel>
               </Col>
               <Col>
-                <Form.Select onChange={handleComisionChange} value={comisiones.idDeComision} aria-label="Default select example">
-                  <option value="a">Comision Uno</option>
-                  <option value="b">Comision Dos</option>
-                  <option value="c">Comision Tres</option>
+                <Form.Select onChange={handleComisionChange} value={comision} aria-label="Default select example">
+                  <option value={0}>Comision Uno</option>
+                  <option value={1}>Comision Dos</option>
+                  <option value={2}>Comision Tres</option>
                 </Form.Select>
               </Col>
             </Row>
