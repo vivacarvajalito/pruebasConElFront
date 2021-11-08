@@ -7,4 +7,7 @@ export default interface iFactura
     TipoFactura: string;
     ImporteFacturado: number; 
     NroFactura: string;
+    FechaDePeriodo:string;
+    FechaDePrestacion:string;
+    FechaDeFactura:string;
 }

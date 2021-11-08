@@ -1,11 +1,11 @@
 import { Fragment } from "react";
-import FacturasTemplates from "./Pages/FacturasPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import FacturasPage from "./Pages/FacturasPage";
 
 const App = () => {
   return (
     <Fragment>
-      <FacturasTemplates />
+        <FacturasPage />
     </Fragment>
   );
 };

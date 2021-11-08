@@ -1,12 +1,14 @@
 import { Fragment } from "react";
-import FacturasOrganismo from "../Organisms/Factura/FacturaOrganismo";
+import FacturasTemplate from "../Templates/FacturaTemplate";
+import { BrowserRouter } from 'react-router-dom';
 
-const FacturasTemplates = ()=>{
-    return(
+const FacturasPage = () => {
+    return (
         <Fragment>
-            <FacturasOrganismo/>
+            <BrowserRouter>
+                <FacturasTemplate />
+            </BrowserRouter>
         </Fragment>
     );
 };
-
-export default FacturasTemplates;
+export default FacturasPage;
