@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react"
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import iFactura from "../Interfaces/Interfaces"
 import AltaFacturas from "../Organisms/Factura/Facturas/AltaFacturas"
 import ListarFacturas from "../Organisms/Factura/Facturas/ListarFacturas"
@@ -21,16 +21,20 @@ const FacturasTemplate = () => {
   }, [facturas, facturaActual]);
   return (
     <Fragment>
-      <Routes>
-        <Route path="/alta" element={<AltaFacturas addANewFactura= {addANewFactura}  />} />
-        <Route path="/modificar" element={facturas.length > 0 ? (
-          <ModificarFacturas
-            updateFactura={updateFactura}
-            factura={facturas[0]}
-          />
-        ) : null} />
-        <Route path="/listar" element={<ListarFacturas facturas={facturas} />} />
-      </Routes>
+      <Switch>
+        <Route path="/alta" component={(factura:iFactura)=><AltaFacturas addANewFactura={addANewFactura} />} >        
+        </Route>
+        <Route path="/modificar" component={()=>facturas.length > 0 ? (
+            <ModificarFacturas
+              updateFactura={updateFactura}
+              factura={facturas[0]}
+            />
+          ) : null} >          
+        </Route>
+        <Route path="/listar" component={(factura:iFactura) => <ListarFacturas facturas={facturas} />}>
+          
+        </Route>
+      </Switch>
     </Fragment>
   );
 };
